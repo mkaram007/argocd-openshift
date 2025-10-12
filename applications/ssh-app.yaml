@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ssh-application
+  namespace: openshift-gitops
+spec:
+  project: test-project
+  source:
+    repoURL: https://github.com/mkaram007/argocd-openshift.git
+    targetRevision: main
+    path: ssh-configs
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: openshift-machine-config-operator
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false
