@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: machineconfigs
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mkaram007/argocd-openshift.git
+    targetRevision: main
+    path: machineconfigs
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: openshift-machine-config-operator
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-demo
+spec:
+  selector:
+    app: web-demo
+  ports:
+    - port: 8080
+      targetPort: 8080
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: web-demo
+spec:
+  to:
+    kind: Service
+    name: web-demo
+  port:
+    targetPort: 8080
+  tls:
+    termination: edge
