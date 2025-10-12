@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/mkaram007/argocd-openshift.git
     targetRevision: main
-    path: ssh-configs
+    path: sshconfigs
   destination:
     server: https://kubernetes.default.svc
     namespace: openshift-machine-config-operator
