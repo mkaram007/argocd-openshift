@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/mkaram007/argocd-openshift
     targetRevision: HEAD
-    path: .
+    path: ./demo-web
   destination: 
     server: https://kubernetes.default.svc
     namespace: demo-web-argocd
